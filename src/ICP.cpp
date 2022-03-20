@@ -2,7 +2,7 @@
 // Created by atway on 2022/3/19.
 //
 #include "ICP.h"
-#include <sophus/se3.hpp>
+
 
 ICP::ICP() {
 
@@ -100,6 +100,7 @@ void ICP::align(PointCloudT& output) {
         //开始计算svd 分解计算RT
         float loss = computeRT(matchInput, matchTarget, T);
         if (abs(last_loss - loss) < 1e-6) break;
+        last_loss = loss;
         //T 变化很小，也迭代终止
         Matrix3f R = T.block(0, 0, 3, 3);
         Vector3f t;
@@ -115,7 +116,6 @@ void ICP::align(PointCloudT& output) {
         last_T = T;
 
         //判断T的变化量很小的情况下
-
         cout << "iter = " << iter << " loss = " << loss  << " T " << se3.norm() << endl;
 
     }

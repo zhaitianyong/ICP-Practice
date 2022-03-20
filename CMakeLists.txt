@@ -19,5 +19,5 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable(ICP main.cpp ./src/ICP.cpp)
+add_executable(ICP main.cpp ./src/ICP.cpp ./src/PLICP.cpp)
 target_link_libraries(ICP  ${PCL_LIBRARIES})
