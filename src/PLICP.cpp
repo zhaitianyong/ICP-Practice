@@ -178,6 +178,7 @@ float  PLICP::computeRT(std::vector<PointT>& input, std::vector<PointT>& target,
     double ty{ x(4) };
     double tz{ x(5) };
 
+    /* hat(R)
     T(0, 0) = 1;
     T(0, 1) = -alpha3;
     T(0, 2) = alpha2;
@@ -186,6 +187,21 @@ float  PLICP::computeRT(std::vector<PointT>& input, std::vector<PointT>& target,
     T(1, 0) = alpha3;
     T(1, 1) = 1;
     T(1, 2) = -alpha1;
+    T(1, 3) = ty;
+
+    T(2, 0) = -alpha2;
+    T(2, 1) = alpha1;
+    T(2, 2) = 1;
+    T(2, 3) = tz;
+    */
+    T(0, 0) = 1;
+    T(0, 1) = alpha1*alpha2-alpha3;
+    T(0, 2) = alpha1*alpha3+alpha2;
+    T(0, 3) = tx;
+
+    T(1, 0) = alpha3;
+    T(1, 1) = alpha1*alpha2*alpha3+1;
+    T(1, 2) = alpha2*alpha3-alpha1;
     T(1, 3) = ty;
 
     T(2, 0) = -alpha2;

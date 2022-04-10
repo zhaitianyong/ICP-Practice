@@ -50,7 +50,9 @@ void plicp(pcl::PointCloud<ICP::PointT>::Ptr input, pcl::PointCloud<ICP::PointT>
     std::cerr << "Saved " << output_cloud->size() << " data points to data/demo_plicp.pcd." << std::endl;
 }
 
+
 int  main() {
+
 
     pcl::PointCloud<ICP::PointT>::Ptr input_cloud(new pcl::PointCloud<ICP::PointT>);
     if (pcl::io::loadPCDFile<pcl::PointXYZ>("../data/input.pcd", *input_cloud) < 0)
